@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>订单详情页</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="bg">
+       <dl class="order-msg order-con">
+            <dt class="tit">寄件人地址：</dt>
+            <dd class="press-pop">
+                <img src="img/sent.png" alt="" class="icon-sent">
+                <div class="sent-msg">
+                    <p class="senter"><span>叶建滨</span><span class="tel">13609590026</span></p>
+                    <p class="sent-dz">福建省福州市鼓楼区137号信和广场B座6楼606</p>
+                </div>
+                <a href="javascript:;" title="" class="next right">&gt;</a>
+            </dd>
+            <dt class="tit">收件人地址：<span class="advise">（建议填写完整信息）</span></dt>
+            <dd>
+                <img src="img/get.png" alt="" class="icon-sent">
+                <div class="sent-msg">
+                    <p class="senter"><span>叶建滨</span><span class="tel">13609590026</span></p>
+                    <p class="sent-dz">福建省福州市鼓楼区137号信和广场4楼</p>
+                </div>
+                <a href="javascript:;" title="" class="next right">&gt;</a>
+            </dd>
+            <dt class="full"></dt>
+            <dd>
+                是否指定：<span>指定品牌</span>
+            </dd>
+            <dt class="full"></dt>
+            <dd>
+                快递员：<span>顺丰快递 李师傅 13609590026</span>
+            </dd>
+            <dt class="full"></dt>
+            <dd>
+                捎句话：<span>请帮我带一个盒子</span>
+            </dd>
+            <dt class="full"></dt>
+            <dd>
+                运单号：<span>111421145657</span>
+            </dd>
+            <dt class="full"></dt>
+            <dd>
+                运费：<span class="count">10元 = 6（支付）+ 4（优惠券）</span>
+            </dd>
+            <dt class="full"></dt>
+            <dd>
+                照片：
+                <div class="pho-box">
+                    <img src="img/photo.png" alt="" class="photo">
+                    <img src="img/photo.png" alt="" class="photo">
+                    <img src="img/photo.png" alt="" class="photo">
+                </div>
+            </dd>
+        </dl>
+    </div>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript">
+    $(".tab-con").eq(0).show();
+    $(".tab a").on("touchstart",function(){
+        var $this = $(this);
+        var $index = $this.index();
+        $this.addClass("tab-on").siblings().removeClass("tab-on");
+        $(".tab-con").eq($index).show().siblings(".tab-con").hide();
+    })
+</script>
+</body>
+</html>

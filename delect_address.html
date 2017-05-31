@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>删除地址</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <link rel="stylesheet" href="css/sm-extend.css">
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?ba76f8230db5f616edc89ce066670710";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+    <dl class="list">
+        <dt class="new-btn">
+            <a href="javascript:;" title="" class="cancle">取消</a>
+            <a href="javascript:;" title="" class="save right">保存</a>
+        </dt>
+        <dd class="new-add-list">
+            <span class="attr">姓名</span>
+            <input type="text" placeholder="叶建滨"/>
+        </dd>
+        <dd class="new-add-list">
+            <span class="attr">手机号码</span>
+            <input type="text" placeholder="13609590026"/>
+        </dd>
+        <dd class="new-add-list city-box">
+            <span class="attr">选择城市</span>
+            <!-- <span class="city">福建省 福州市 鼓楼区</span> -->
+            <div class="page-group city">
+                <div id="page-city-picker" class="page">
+                <div class="content">
+                    <input type="text" placeholder="" id='city-picker' />
+                </div>
+                </div> 
+            </div>       
+            <a href="javascript:;" title="" class="location right"></a>
+        </dd>
+        <dd class="new-add-list new-add-list-2">
+            <span class="attr">详细地址</span>
+            <textarea placeholder="137号信和广场4楼"></textarea> 
+        </dd>
+    </dl>
+    <div class="agree-box agree-box-2">
+         <input type="checkbox" checked="checked" class="check"/>
+         <p class="agree">设为默认寄件地址</p>
+     </div>
+     <a href="javascript:;" title="" class="btn-del">
+         删除本地址</a>
+
+<script type="text/javascript" src="js/sm.js"></script>
+<script type="text/javascript" src="js/sm-city-picker.js" charset="utf-8"></script>  
+<script>
+  $("#city-picker").cityPicker({
+     value: ['天津', '河东区'],
+    toolbarTemplate: '<header class="bar bar-nav">\
+    <button class="button button-link pull-right close-picker">确定</button>\
+    <h1 class="title">选择收货地址</h1>\
+    </header>'
+  });
+</script>  
+</body>
+</html>

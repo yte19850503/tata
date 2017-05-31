@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>我寄的快递</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="bg">
+        <div class="sent-address coupons-con clearfix">
+            <a href="javascript:;" title="" class="slove right sent">解绑手机</a>
+        </div>
+        <div class="tab">
+            <a href="./sent_express.html" title="我寄的快递" class="tab-on">我寄的快递</a>
+            <a href="./get_express.html" title="我收的快递">我收的快递</a>
+        </div>
+        <div id="wrapper" class="tab-con tab-con-wrapper">
+            <div id="scroller">
+                <ul id="thelist">
+                    <li>
+                        <h2 class="tab-user">收件人：张三<span class="state">待抢单</span></h2>
+                        <p class="tab-add">
+                            <span>福建省福州市</span>
+                            <img src="img/to.png" alt="" class="to">
+                            <span>北京市通州区</span>
+                        </p>
+                        <p class="tab-num">运单号：454564654<span class="right">3月20日&emsp;10：15</span></p>
+                    </li>
+                     <li>
+                        <h2 class="tab-user">收件人：张三<span class="state">待抢单</span></h2>
+                        <p class="tab-add">
+                            <span>福建省福州市</span>
+                            <img src="img/to.png" alt="" class="to">
+                            <span>北京市通州区</span>
+                        </p>
+                        <p class="tab-num">运单号：454564654<span class="right">3月20日&emsp;10：15</span></p>
+                    </li>
+                </ul>
+                <div id="pullUp">
+                    <span class="pullUpIcon"></span><span class="pullUpLabel">Pull up to refresh...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript">
+//下拉加载更多
+    var myScroll,
+    // pullDownEl, pullDownOffset,
+    pullUpEl, pullUpOffset,
+    generatedCount = 0;
+
+    function pullUpAction () {
+        setTimeout(function () {    // <-- Simulate network congestion, remove setTimeout from production!
+            var el, li, i;
+            el = document.getElementById('thelist');
+
+            for (i=0; i<3; i++) {
+                li = document.createElement('li');
+                li.innerHTML = '<h2 class="tab-user">++++收件人：张三<span class="state">待抢单</span></h2><p class="tab-add"><span>福建省福州市</span><img src="img/to.png" alt="" class="to"><span>北京市通州区</span></p>';
+                el.appendChild(li, el.childNodes[0]);
+            }
+            myScroll.refresh();     // Remember to refresh when contents are loaded (ie: on ajax completion)
+        }, 1000);   // <-- Simulate network congestion, remove setTimeout from production!
+    }
+
+    function loaded() {
+        // pullDownEl = document.getElementById('pullDown');
+        // pullDownOffset = pullDownEl.offsetHeight;
+        pullUpEl = document.getElementById('pullUp');   
+        pullUpOffset = pullUpEl.offsetHeight;
+        
+        myScroll = new iScroll('wrapper', {
+            useTransition: true,
+            // topOffset: pullDownOffset,
+            onRefresh: function () {
+               if (pullUpEl.className.match('loading')) {
+                    pullUpEl.className = '';
+                    pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+                }
+            },
+            onScrollMove: function () {
+              if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
+                    pullUpEl.className = 'flip';
+                    pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Release to refresh...';
+                    this.maxScrollY = this.maxScrollY;
+                } else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
+                    pullUpEl.className = '';
+                    pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+                    this.maxScrollY = pullUpOffset;
+                }
+            },
+            onScrollEnd: function () {
+                if (pullUpEl.className.match('flip')) {
+                    pullUpEl.className = 'loading';
+                    pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Loading...';                
+                    pullUpAction(); // Execute custom function (ajax call?)
+                }
+            }
+        });
+        
+        setTimeout(function () { document.getElementById('wrapper').style.left = '0'; }, 800);
+    }
+
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+    document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+</script>
+</body>
+</html>

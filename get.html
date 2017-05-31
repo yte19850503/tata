@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>收单</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="clearfix">
+            <a href="javascript:;" title="" class="back"></a>
+            <h1 class="get-order">收单</h1>
+            <a href="javascript:;" title="" class="green right sent">
+                寄件地址</a>
+        </div>
+        <dl class="pop-add order-msg">
+            <dt class="tit">收件人信息<i class="arrow"></i></dt>
+            <dd>
+                <p class="clearfix detail">
+                    <span class="left">寄件人：<span>叶建滨</span></span>
+                    <span class="right">电话：<span>13609590026</span></span>
+                </p>
+                <p class="pop-address">寄件人地址：<span class="address">福建省福州市鼓楼区五四路137号信和广场4楼401室</span></p>
+            </dd>
+        </dl>
+    </header>
+    <div class="order-box">
+            <a href="javascript:;" title="" class="green">订单1</a>
+        <i class="add"></i>
+    </div>
+    <dl class="order-msg">
+        <dt class="tit">收件人信息</dt>
+        <dd class="clearfix">
+            <span class="left">收件人：<span>叶建滨</span></span>
+            <span class="right">电话：<span>13609590026</span></span>
+        </dd>
+        <dd class="address-box">
+            收件人地址：<span class="address">福建省福州市鼓楼区五四路137号信和广场4楼401室</span>
+        </dd>
+        <dt class="tit">快递信息</dt>
+        <dd class="clearfix">
+            <span class="left">快递品牌</span>
+            <span class="right">顺丰快递</span>
+        </dd>
+        <dd class="clearfix">
+            <span class="left">运单号：1</span>
+            <a href="javascript:;" title="" class="camera right"></a>
+        </dd>
+        <dd class="address-box">
+            快递照片：<a href="javascript:;" title="" class="add-photo"></a>
+        </dd>
+        <dt class="tit">支付信息</dt>
+        <dd><span class="money">金额：6.01</span></dd>
+        <dd class="choose-way">
+            <div class="pay">
+                <label>在线</label>
+                <input type="radio" name="pay"/>
+            </div>
+            <div class="pay">
+                <label>线下</label>
+                <input type="radio" name="pay"/>
+            </div>
+            <div class="pay">
+                <label>到付</label>
+                <input type="radio" name="pay"/>
+            </div>
+            <div class="pay">
+                <label>月结</label>
+                <input type="radio" name="pay"/>
+            </div>
+        </dd>
+    </dl>
+    <div>
+        <p class="totle">累计<span>45</span>元</p>
+        <a href="javascript:;" title="" class="btn-green">
+            收单</a>
+    </div>
+<script src="js/zepto.min.js" type="text/javascript"></script>
+<script>
+    $(".sent").on("touchstart",function(){
+        $(".pop-add").toggle();
+    })
+</script>
+</body>
+</html>

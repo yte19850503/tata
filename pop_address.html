@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>添加地址</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <div class="pop-address" style="display:block">
+        <div class="pop-sha"></div>
+        <div class="pop-con" id="scroller">
+            <h1 class="admi-msg">
+                <span class="sent-close add-close">&times;</span>
+            </h1>
+            <div id="wrapper">
+                <div id="scroller">
+                    <ul class="sent-list pop-list" id="thelist">
+                        <li>
+                            <a href="javascript:;" class="location left"></a>
+                            <h1 class="add-tit">
+                            <span>洋下新村</span>
+                            <p>福州省福州市晋安区六一北路223号</p></h1>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="location left"></a>
+                            <h1 class="add-tit">
+                            <span>洋下新村</span>
+                            <p>福州省福州市晋安区六一北路223号</p></h1>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="location left"></a>
+                            <h1 class="add-tit">
+                            <span>洋下新村</span>
+                            <p>福州省福州市晋安区六一北路223号</p></h1>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="location left"></a>
+                            <h1 class="add-tit">
+                            <span>洋下新村</span>
+                            <p>福州省福州市晋安区六一北路223号</p></h1>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="location left"></a>
+                            <h1 class="add-tit">
+                            <span>洋下新村</span>
+                            <p>福州省福州市晋安区六一北路223号</p></h1>
+                        </li>
+                        <li>
+                            <a href="javascript:;" class="location left"></a>
+                            <h1 class="add-tit">
+                            <span>洋下新村</span>
+                            <p>福州省福州市晋安区六一北路223号</p></h1>
+                        </li>
+                    </ul>
+                   <div id="pullUp">
+                        <span class="pullUpIcon"></span><span class="pullUpLabel">Pull up to refresh...</span>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script>
+    $(".add-close").on("touchstart",function(){
+        $(".pop-address").hide();
+    })
+//下拉加载更多
+    var myScroll,
+    // pullDownEl, pullDownOffset,
+    pullUpEl, pullUpOffset,
+    generatedCount = 0;
+
+    function pullUpAction () {
+        setTimeout(function () {    // <-- Simulate network congestion, remove setTimeout from production!
+            var el, li, i;
+            el = document.getElementById('thelist');
+
+            for (i=0; i<3; i++) {
+                li = document.createElement('li');
+                li.innerHTML = '<a href="javascript:;" class="location left"></a>';
+                li.innerHTML += '<h1 class="add-tit"><span>下拉刷新新增地址</span><p>福州省福州市晋安区六一北路223号</p></h1>';
+                el.appendChild(li, el.childNodes[0]);
+            }
+            myScroll.refresh();     // Remember to refresh when contents are loaded (ie: on ajax completion)
+        }, 1000);   // <-- Simulate network congestion, remove setTimeout from production!
+    }
+
+    function loaded() {
+        // pullDownEl = document.getElementById('pullDown');
+        // pullDownOffset = pullDownEl.offsetHeight;
+        pullUpEl = document.getElementById('pullUp');   
+        pullUpOffset = pullUpEl.offsetHeight;
+        
+        myScroll = new iScroll('wrapper', {
+            useTransition: true,
+            // topOffset: pullDownOffset,
+            onRefresh: function () {
+               if (pullUpEl.className.match('loading')) {
+                    pullUpEl.className = '';
+                    pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+                }
+            },
+            onScrollMove: function () {
+              if (this.y < (this.maxScrollY - 5) && !pullUpEl.className.match('flip')) {
+                    pullUpEl.className = 'flip';
+                    pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Release to refresh...';
+                    this.maxScrollY = this.maxScrollY;
+                } else if (this.y > (this.maxScrollY + 5) && pullUpEl.className.match('flip')) {
+                    pullUpEl.className = '';
+                    pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Pull up to load more...';
+                    this.maxScrollY = pullUpOffset;
+                }
+            },
+            onScrollEnd: function () {
+                if (pullUpEl.className.match('flip')) {
+                    pullUpEl.className = 'loading';
+                    pullUpEl.querySelector('.pullUpLabel').innerHTML = 'Loading...';                
+                    pullUpAction(); // Execute custom function (ajax call?)
+                }
+            }
+        });
+        
+        setTimeout(function () { document.getElementById('wrapper').style.left = '0'; }, 800);
+    }
+
+    document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+    document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+</script>
+</body>
+</html>

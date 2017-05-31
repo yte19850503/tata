@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>支付页面</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="text/javascript" src="js/flexible.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/swiper-3.3.1.min.css">
+</head>
+<body>
+    <ul class="pay-list">
+        <li class="clearfix">
+            <div class="sec-1 left">
+                <img src="img/avatar.png" alt="头像" class="avatar">
+                <span class="user">叶师傅</span>
+            </div>
+            <div class="sec-2 left">
+                <p class="history">
+                    <span class="distance">鼓楼一部</span>
+                    <span>圆通快递</span>
+                </p>
+                <p>
+                    <img src="img/star.png" class="star">
+                    <img src="img/star.png" class="star">
+                    <img src="img/star.png" class="star">
+                    <img src="img/star.png" class="star">
+                    <img src="img/star.png" class="star">
+                    <span>3单</span>
+                </p>
+            </div>
+            <div class="sec-3 right">
+                <a href="javascript:;" title="" class="btn-phone"></a>
+            </div>
+        </li>
+        <li>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <p>
+                            <span class="padd">111收件人：叶凡</span>
+                            <span>快递单号：4654654</span>
+                        </p>
+                        <img src="img/demo_img.png" alt="" class="get-user">
+                    </div>
+                    <div class="swiper-slide">
+                        <p>
+                            <span class="padd">2222收件人：叶凡</span>
+                            <span>快递单号：4654654</span>
+                        </p>
+                        <img src="img/demo_img.png" alt="" class="get-user">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </li>
+        <li>
+            <p>您选择的是线上支付：</p>
+            <span class="before">15<i>元</i></span>
+            <em class="turn">&gt;&gt;</em>
+            <span class="now">5<i>元</i></span>
+        </li>
+        <li>
+            <div class="con-box">
+                <p>
+                    <span>优惠券</span>
+                    <span class="coupons right">你有5张优惠券可用</span>
+                </p>
+                <p>优惠券金额不可超过订单金额，一次使用一张</p>
+            </div>
+            <a href="javascript:;" title="" class="next right">&gt;</a>
+        </li>
+    </ul>
+   <div class="pay-press">
+       <div class="bg-line"></div>
+       <a href="javascript:;" title="" class="btn-green wechat-pay">
+           微信支付</a>
+   </div>
+    <script type="text/javascript" src="js/zepto.min.js"></script>
+    <script type="text/javascript" src="js/swiper-3.3.1.min.js"></script>
+    <script>
+        var mySwiper = new Swiper ('.swiper-container', {
+            // direction: 'vertical',
+            loop: true,
+            pagination: '.swiper-pagination',
+            paginationClickable: true
+          })        
+    </script>
+</body>
+</html>
